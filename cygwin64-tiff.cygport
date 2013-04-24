@@ -1,0 +1,34 @@
+CROSS_HOST="x86_64-pc-cygwin"
+inherit cross
+
+NAME="cygwin64-tiff"
+VERSION=3.9.7
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="TIFF image library for Cygwin 64bit toolchain"
+DESCRIPTION="Included in this software distribution is a library, libtiff, for
+reading and writing TIFF images, a small collection of tools for doing
+simple manipulations of TIFF images on UNIX systems, and documentation
+on the library and tools."
+HOMEPAGE="http://www.libtiff.org/"
+SRC_URI="ftp://ftp.remotesensing.org/pub/libtiff/tiff-${VERSION}.tar.gz"
+SRC_DIR="tiff-${VERSION}"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/libtiff.git/plain/libtiff-CVE-2012-4447.patch?h=f17
+	http://pkgs.fedoraproject.org/cgit/libtiff.git/plain/libtiff-CVE-2012-4564.patch?h=f17
+	http://pkgs.fedoraproject.org/cgit/libtiff.git/plain/libtiff-CVE-2012-5581.patch?h=f17
+	http://pkgs.fedoraproject.org/cgit/libtiff.git/plain/libtiff-printdir-width.patch?h=f17
+	http://pkgs.fedoraproject.org/cgit/libtiff.git/plain/libtiff-tiffinfo-exif.patch?h=f17
+	libtiff-3.9.2-cygwin.patch
+	libtiff-3.9.2-libport.patch
+	libtiff-3.9.2-soname.patch
+"
+
+CYGCONF_ARGS="
+	--enable-cxx
+	--enable-jpeg
+	--enable-zlib
+	--without-x
+	--with-docdir=/usr/share/doc/${NAME}
+"
+MAKEOPTS+=" bin_PROGRAMS= dist_doc_DATA= dist_man1_MANS= dist_man3_MANS= "

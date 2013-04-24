@@ -1,0 +1,22 @@
+--- origsrc/tiff-3.9.2/libtiff/Makefile.am	2009-12-23 11:29:03.120000000 -0500
++++ src/tiff-3.9.2/libtiff/Makefile.am	2009-12-23 11:37:46.334000000 -0500
+@@ -126,7 +126,7 @@
+ if HAVE_RPATH
+ libtiffxx_la_LDFLAGS += $(LIBDIR)
+ endif
+-libtiffxx_la_LIBADD = $(LIBTIFF) $(LIBPORT)
++libtiffxx_la_LIBADD = $(LIBTIFF)
+ libtiffxx_la_DEPENDENCIES = libtiff.la
+ 
+ #
+--- origsrc/tiff-3.9.2/tools/Makefile.am	2009-01-01 13:02:22.000000000 -0500
++++ src/tiff-3.9.2/tools/Makefile.am	2009-12-23 11:39:18.316000000 -0500
+@@ -23,7 +23,7 @@
+ 
+ # Process this file with automake to produce Makefile.in.
+ 
+-LIBPORT = $(top_builddir)/port/libport.la
++LIBPORT =
+ LIBTIFF = $(top_builddir)/libtiff/libtiff.la
+ 
+ EXTRA_DIST = Makefile.vc
